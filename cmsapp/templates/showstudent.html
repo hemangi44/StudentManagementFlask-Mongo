@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Student Info
+{% endblock %}
+
+{% block content %}
+
+<h1>Student Information</h1>
+
+<a href="{{ url_for (  'addstudent' ) }}">Add Student</a>
+<br><br>
+<table border="2">
+	{% if data %}
+	<tr>
+		<th>Roll No.</th>
+		<th>Name</th>
+		<th>Department</th>
+		<th>Action</th>
+	</tr>
+	{% for d in data %}
+	<tr>
+
+
+		<td>{{ d.rno }}</td>
+		<td>{{ d.name }}</td>
+		<td>{{ d.dept }}</td>
+
+		<td><a href="{{ url_for (  'deletestudent' , id =d.rno ) }}" onclick="return confirm('Are you Sure??')"
+				style="text-decoration:none; color:black;">Delete</a></td>
+
+	</tr>
+	{% endfor %}
+	{% else %}
+	<tr>
+		<td>No data</td>
+	</tr>
+	{% endif %}
+
+
+</table>
+
+{% endblock %}

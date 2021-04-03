@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Student Page
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Student Information</h1>
+<form method="POST" action="{{ url_for (  'addstudent' ) }}">
+	{{ csrf_token }}
+	<table>
+		{% for field in fm %}
+		{{ field.label() }}
+		{{ field() }}
+		<br>
+		{% endfor %}
+	</table>
+</form>
+
+{{ msg }}
+{% endblock %}

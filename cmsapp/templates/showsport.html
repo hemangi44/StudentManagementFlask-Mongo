@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sport Info
+{% endblock %}
+
+{% block content %}
+
+<h1>Sports Information</h1>
+
+<a href="{{ url_for (  'addsport' ) }}">Add Sports</a>
+<br><br>
+<table border="2">
+	{% if data %}
+	<tr>
+		<th>Sport Id</th>
+		<th>Name</th>
+		<th>Student Name</th>
+		<th>Action</th>
+	</tr>
+	{% for d in data %}
+	<tr>
+
+
+		<td>{{ d.sportid }}</td>
+		<td>{{ d.name }}</td>
+		<td>
+			{{ d.studentname }}
+
+		</td>
+
+		<td><a href="{{ url_for (  'deletesport' id=d.sportid ) }}" onclick="return confirm('Are you Sure??')"
+				style="text-decoration:none; color:black;">Delete</a></td>
+
+	</tr>
+	{% endfor %}
+	{% else %}
+	<tr>
+		<td>No data</td>
+	</tr>
+	{% endif %}
+
+
+</table>
+
+{% endblock %}

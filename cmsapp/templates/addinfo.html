@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Info Page
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Peronal Information</h1>
+<form method="POST" action="{{ url_for (  'addinfo' ) }}">
+	{% csrf_token %}
+	<table border="2">
+		{{ fm.as_table }}
+	</table>
+	<br><br>
+	<input type="submit" value="Save">
+</form>
+
+{{ msg }}
+{% endblock %}

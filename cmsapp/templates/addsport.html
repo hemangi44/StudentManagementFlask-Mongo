@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sport Page
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Sports Information</h1>
+<form method="POST" action="{{ url_for (  'addsport' ) }}">
+	{% csrf_token %}
+	<table border="2">
+		{{ fm.as_table }}
+	</table>
+	<br><br>
+	<input type="submit" value="Save">
+</form>
+
+{{ msg }}
+{% endblock %}
